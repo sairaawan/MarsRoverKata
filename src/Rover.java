@@ -99,7 +99,7 @@ public class Rover {
 
     @Override
     public String toString() {
-        return "Rover{" +
+        return "{" +
                 "x_axis=" + x_axis +
                 ", y_axis=" + y_axis +
                 ", d=" + d +
