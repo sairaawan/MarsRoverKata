@@ -96,4 +96,13 @@ public class Rover {
             if (x == 'M') moveRover();
         }
     }
+
+    @Override
+    public String toString() {
+        return "Rover{" +
+                "x_axis=" + x_axis +
+                ", y_axis=" + y_axis +
+                ", d=" + d +
+                '}';
+    }
 }
