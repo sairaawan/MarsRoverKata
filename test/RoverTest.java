@@ -12,7 +12,7 @@ class RoverTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        rover = new Rover(1, 2, Direction.North); // instantiate it before every test
+        rover = new Rover( 1, 2, Direction.North); // instantiate it before every test
     }
 
     @Test
