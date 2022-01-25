@@ -73,11 +73,11 @@ public class Rover {
         }
     }
 
-    public void setPlateuMax(int x, int y) {
+    public void setPlateauMax(int x, int y) {
         this.p = new Plateau(x, y);
     }
 
-    public Plateau getPlateru() {
+    public Plateau getPlateau() {
         return this.p;
     }
 
@@ -97,4 +97,3 @@ public class Rover {
         }
     }
 }
-
