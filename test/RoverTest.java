@@ -8,7 +8,7 @@ import org.junit.rules.ExpectedException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RoverTest {
-    public Rover rover; // declare as a private class member
+    public Rover rover;
 
 
     @Test
