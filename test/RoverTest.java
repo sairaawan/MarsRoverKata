@@ -10,13 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class RoverTest {
     public Rover rover; // declare as a private class member
 
-    @BeforeEach
-    public void setUp() throws Exception {
-        rover = new Rover( 1, 2, Direction.North); // instantiate it before every test
-    }
 
     @Test
     public void checkInstruction_L() throws Exception {
+        rover = new Rover( 1, 2, Direction.North);
         rover.readInstruction("LMLMLMLMM");
         assertEquals(rover.getX_axis(), 1);
         assertEquals(rover.getY_axis(), 3);
@@ -24,7 +21,18 @@ class RoverTest {
     }
 
     @Test
+    public void checkSecondInstruction() throws Exception {
+        rover = new Rover( 3, 3, Direction.East);
+        rover.readInstruction("MMRMMRMRRM");
+        assertEquals(rover.getX_axis(), 5);
+        assertEquals(rover.getY_axis(), 1);
+        assertEquals(rover.getD(), Direction.East);
+
+    }
+
+    @Test
     public void checkMove() throws Exception {
+        rover = new Rover( 1, 3, Direction.East);
         boolean thrown = false;
 
         try {
@@ -34,6 +42,8 @@ class RoverTest {
         }
 
         assertTrue(thrown);
+
     }
+
 
 }
