@@ -3,8 +3,8 @@ import java.util.Locale;
 public class Rover implements VehicleRover{
     public int x_axis = 1;
     public int y_axis = 2;
-    Plateau p = null;
-    Direction d;
+    Plateau plateau = null;
+    Direction direction;
 
     public int getX_axis() {
         return x_axis;
@@ -15,14 +15,14 @@ public class Rover implements VehicleRover{
     }
 
     public Direction getD() {
-        return d;
+        return direction;
     }
 
     public Rover(Plateau p, int x_axis, int y_axis, Direction d) throws Exception {
-        this.p = p;
+        this.plateau = p;
         this.x_axis = x_axis;
         this.y_axis = y_axis;
-        this.d = d;
+        this.direction = d;
         checkRoverPosition();
     }
 
@@ -32,57 +32,57 @@ public class Rover implements VehicleRover{
     }
 
     public void moveRover() throws Exception {
-        if (d == Direction.North && this.y_axis + 1 <= this.p.getY_MAX())
+        if (direction == Direction.North && this.y_axis + 1 <= this.plateau.getY_MAX())
             this.y_axis += 1;
-        else if (d == Direction.East && this.x_axis + 1 <= this.p.getX_MAX())
+        else if (direction == Direction.East && this.x_axis + 1 <= this.plateau.getX_MAX())
             this.x_axis += 1;
-        else if (d == Direction.West && this.x_axis - 1 >= 0)
+        else if (direction == Direction.West && this.x_axis - 1 >= 0)
             this.x_axis -= 1;
-        else if (d == Direction.South && this.y_axis - 1 >= 0)
+        else if (direction == Direction.South && this.y_axis - 1 >= 0)
             this.y_axis -= 1;
         else
-            throw new Exception("Exceeding plateau coordinates: Movement not allowed further, Please change your direction after "+ p.getY_MAX() + " moves");
+            throw new Exception("Exceeding plateau coordinates: Movement not allowed further, Please change your direction after "+ plateau.getY_MAX() + " moves");
     }
 
     public void turnRight() {
-        if (this.d == Direction.North) {
-            this.d = Direction.East;
-        } else if (this.d == Direction.South) {
-            this.d = Direction.West;
+        if (this.direction == Direction.North) {
+            this.direction = Direction.East;
+        } else if (this.direction == Direction.South) {
+            this.direction = Direction.West;
 
-        } else if (this.d == Direction.East) {
-            this.d = Direction.South;
+        } else if (this.direction == Direction.East) {
+            this.direction = Direction.South;
 
-        } else if (this.d == Direction.West) {
-            this.d = Direction.North;
+        } else if (this.direction == Direction.West) {
+            this.direction = Direction.North;
         }
 
     }
 
     public void turnLeft() {
-        if (this.d == Direction.North) {
-            this.d = Direction.West;
-        } else if (this.d == Direction.South) {
-            this.d = Direction.East;
+        if (this.direction == Direction.North) {
+            this.direction = Direction.West;
+        } else if (this.direction == Direction.South) {
+            this.direction = Direction.East;
 
-        } else if (this.d == Direction.East) {
-            this.d = Direction.North;
+        } else if (this.direction == Direction.East) {
+            this.direction = Direction.North;
 
-        } else if (this.d == Direction.West) {
-            this.d = Direction.South;
+        } else if (this.direction == Direction.West) {
+            this.direction = Direction.South;
         }
     }
 
     public void setPlateauMax(int x, int y) {
-        this.p = new Plateau(x, y);
+        this.plateau = new Plateau(x, y);
     }
 
     public Plateau getPlateau() {
-        return this.p;
+        return this.plateau;
     }
 
     public void checkRoverPosition() throws Exception {
-        if (x_axis > p.getX_MAX() || y_axis > p.getY_MAX())
+        if (x_axis > plateau.getX_MAX() || y_axis > plateau.getY_MAX())
             throw new Exception("Rovers position is incorrect. Please enter correct coordinates");
     }
 
@@ -95,7 +95,7 @@ public class Rover implements VehicleRover{
             if (x == 'R') turnRight();
             if (x == 'M') moveRover();
         }
-        return new Object[] {this.x_axis, this.y_axis, this.d};
+        return new Object[] {this.x_axis, this.y_axis, this.direction};
     }
 
     @Override
@@ -103,7 +103,7 @@ public class Rover implements VehicleRover{
         return "{" +
                 "x_axis=" + x_axis +
                 ", y_axis=" + y_axis +
-                ", d=" + d +
+                ", d=" + direction +
                 '}';
     }
 }
