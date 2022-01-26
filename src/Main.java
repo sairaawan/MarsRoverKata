@@ -73,7 +73,7 @@ public class Main {
             rover.readInstruction(instruct);
             System.out.println("First Rover new position: " + rover);
             rover2.readInstruction(instruct);
-            System.out.println("Rover new position: " + rover2);
+            System.out.println("Second Rover new position: " + rover2);
             if (rover.x_axis == rover2.x_axis && rover.y_axis == rover2.y_axis) {
                 throw new Exception("Warning! Rovers are at same position. Collision expected");
             }
