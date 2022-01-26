@@ -1,6 +1,6 @@
 import java.util.Locale;
 
-public class Rover {
+public class Rover implements VehicleRover{
     public int x_axis = 1;
     public int y_axis = 2;
     Plateau p = null;
@@ -41,7 +41,7 @@ public class Rover {
         else if (d == Direction.South && this.y_axis - 1 >= 0)
             this.y_axis -= 1;
         else
-            throw new Exception("Exceeding plateau coordinates: Movement not allowed further, Please change your direction after 5 moves");
+            throw new Exception("Exceeding plateau coordinates: Movement not allowed further, Please change your direction after "+ p.getY_MAX() + " moves");
     }
 
     public void turnRight() {
@@ -86,7 +86,7 @@ public class Rover {
             throw new Exception("Rovers position is incorrect. Please enter correct coordinates");
     }
 
-    public void readInstruction(String instruct) throws Exception {
+    public Object[] readInstruction(String instruct) throws Exception {
         instruct = instruct.toUpperCase();
         instruct = instruct.replaceAll("[^LRM]", "");
         for (int ins = 0; ins < instruct.length(); ins++) {
@@ -95,6 +95,7 @@ public class Rover {
             if (x == 'R') turnRight();
             if (x == 'M') moveRover();
         }
+        return new Object[] {this.x_axis, this.y_axis, this.d};
     }
 
     @Override
