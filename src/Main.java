@@ -81,7 +81,12 @@ public class Main {
         rover2.readInstruction(instruct);
         System.out.println("Rover new position: " + rover2);
 
+        if (rover.x_axis == rover2.x_axis && rover.y_axis == rover2.y_axis) {
+            throw new Exception("Warning! Rovers are at same position");
+        }
+
         System.out.println("See you next time. Bye");
+
 
     }
 
