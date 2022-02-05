@@ -2,30 +2,27 @@
 import java.util.Scanner;
 
 public class Main {
+    private static Scanner scan = new Scanner(System.in);
 
     public static int getPlateauX() {
-        Scanner scan = new Scanner(System.in);
         System.out.println("Enter P1 coordinates");
         int p1 = scan.nextInt();
         return p1;
     }
 
     public static int getPlateauY() {
-        Scanner scan = new Scanner(System.in);
         System.out.println("Enter P2 coordinates");
         int p2 = scan.nextInt();
         return p2;
     }
 
     public static int getCoordinatesX() {
-        Scanner scan = new Scanner(System.in);
         System.out.println("Enter x coordinates");
         int x = scan.nextInt();
         return x;
     }
 
     public static int getCoordinatesY() {
-        Scanner scan = new Scanner(System.in);
         System.out.println("Enter y coordinates");
         int y = scan.nextInt();
         return y;
@@ -33,7 +30,6 @@ public class Main {
 
     public static Direction getDirection() {
         Direction d = null;
-        Scanner scan = new Scanner(System.in);
         System.out.println("Enter Rovers position");
         String direction = scan.next();
         if (direction.equalsIgnoreCase("N"))
@@ -50,36 +46,33 @@ public class Main {
     public static void main(String[] args) throws Exception {
         int p1 = getPlateauX();
         int p2 = getPlateauY();
-
         System.out.println("First Rover");
         int x = getCoordinatesX();
         int y = getCoordinatesY();
         Direction d = getDirection();
         Rover rover = new Rover(new Plateau(p1, p2), x, y, d);
         System.out.println("First Rover starting position: " + rover);
-
         System.out.println("Second Rover");
         x = getCoordinatesX();
         y = getCoordinatesY();
         d = getDirection();
         Rover rover2 = new Rover(new Plateau(p1, p2), x, y, d);
         System.out.println("Second Rover current position: " + rover2);
-
         String response;
         do {
-            Scanner scan = new Scanner(System.in);
+
             System.out.println("Enter instruction for rovers");
             String instruct = scan.next();
             rover.readInstruction(instruct);
             System.out.println("First Rover new position: " + rover);
             rover2.readInstruction(instruct);
             System.out.println("Second Rover new position: " + rover2);
-            if (rover.x_axis == rover2.x_axis && rover.y_axis == rover2.y_axis) {
+            if (rover.getX_axis() == rover2.getX_axis() && rover.getY_axis() == rover2.getY_axis()) {
                 throw new Exception("Warning! Rovers are at same position. Collision expected");
             }
             System.out.println("Continue moving Rovers ? Enter y/n");
             response = scan.next();
-        } while (response.equalsIgnoreCase("n"));
+        } while (response.equalsIgnoreCase("y"));
 
         System.out.println("See you next time. Bye");
     }
