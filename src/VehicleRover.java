@@ -1,9 +1,9 @@
 public interface VehicleRover {
-    public Object[] readInstruction(String instruct) throws Exception;
+    void readInstruction(String instruct) throws Exception;
 
-    public void moveRover() throws Exception;
+    void moveRover() throws Exception;
 
-    public void turnRight();
+    void turnRight();
 
-    public void turnLeft();
+    void turnLeft();
 }
