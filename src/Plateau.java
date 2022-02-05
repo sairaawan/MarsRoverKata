@@ -15,4 +15,5 @@ public class Plateau {
     public int getY_MAX() {
         return Y_MAX;
     }
+
 }
