@@ -1,43 +1,49 @@
-# MarsRoverKata
+# Move rovers around mars
 
-program to move rovers around the surface of Mars! 
+•	Surface of mars is a rectangular/square grid plateau
+•	Plateau has x and y  coordinates defining total grid for example 5*5
 
-# Assumptions:
+# Rover:
 
-The surface of Mars is represented by a Plateau, ywhich is a square/rectangular grid for the purpose of  this task. 
-Rovers navigate the Plateau so they can use their special cameras and robot arms to collect samples back to Planet Earth  
+Rover is represented by (attributes):
 
-# Representation of a Rover’s Position on the Plateau 
+1.	X and y coordinates	
+2.	Direction (N,S,E,W)
 
-The Plateau is divided into a grid. 
-A Rover’s position is represented by x and y co-ordinates and the letters N, S, W, E to represent North,  South, West, East (the four cardinal compass points) respectively.
+Rover can do the following when given following instruction (Methods):
+1.	L: Turn left 90 degrees
+2.	R: Turn right 90 degrees
+3.	M: move rover one grid point maintaining the direction
+To run the program we have to provide following task in a sequence:
+1.	Give the upper-right coordinates for the plateau=>(x,y)
+2.	Rover coordinates and direction it is facing=>(x,y)
+3.	Instruction to the rover=> L/r/m
 
 
-# Example 
+# Rover receiving instruction:
 
-0 0 N 
-This means the Rover is at the bottom-left corner facing in the North direction. 
-Instructing a Rover to Move Around the Plateau 
-. To move a Rover around the Plateau, a string of letters is sent to a Rover. 
-Here are the letters and their resultant action: 
-Letter 
-Action
-L 
-Spins the Rover 90 degrees Left without moving from the current  coordinate point/
-R 
-Spins the Rover 90 degrees Right without moving from the current  coordinate point/
-M 
-Moves the Rover forward by one grid point, maintaining the same  heading (i.e. from where the Rover is facing (its orientation)).
+•	Case Left:
 
-# Subsequent Lines of Input into the Program - Input to Rovers 
+1.	If direction is North, change it to West.
+2.	If direction is South, change it to East.
+3.	If direction is East, change to North.
+4.	If direction is West, change to South.
 
-This represents the instructions to move the rovers. 
-Each rover receives two lines of input. 
-First Line of Input to a Rover 
-The Rover’s position is represented by two integers representing the X and Y coordinates and a letter representing where the Rover is facing (its  orientation). 
-1 2 N 
-Second Line of Input to a Rover 
-A string of letters representing the instructions to move the Rover around the Plateau. 
-Movement Rules 
-Rovers move sequentially, this means that the first Rover needs to finish moving first before the next one can move. Output 
-For each Rover, the output represents its final position (final coordinates and where it is facing). 
+•	Case Right:
+
+1.	If direction is North, change to East.
+2.	If direction is South, change to West.
+3.	If direction is East, change to South.
+4.	If direction is West, change to North.
+
+•	Case Move:
+
+1.	If direction is North, do => y_axis+1, making sure it’s not exceeding max y-axis value of the plateau.
+2.	If direction is South, do => x_axis+1, making sure it’s not exceeding max x-axis value of the plateau.
+3.	If direction is East, do => x_axis-1, making sure it’s not exceeding min x-axis value (0) of the plateau.
+4.	If direction is West, do => y_axis-1, making sure it’s not exceeding min y-axis value (0) of the plateau.
+
+
+
+
+
