@@ -17,7 +17,9 @@ Rover can do the following when given following instruction (Methods):
 1.	L: Turn left 90 degrees
 2.	R: Turn right 90 degrees
 3.	M: move rover one grid point maintaining the direction
+
 To run the program we have to provide following task in a sequence:
+
 1.	Give the upper-right coordinates for the plateau=>(x,y)
 2.	Rover coordinates and direction it is facing=>(x,y)
 3.	Instruction to the rover=> L/r/m
