@@ -34,11 +34,6 @@ public class Rover implements VehicleRover {
         checkRoverPosition();
     }
 
-    public Rover(int x_axis, int y_axis, Direction d) throws Exception {
-        this(new Plateau(5, 5), x_axis, y_axis, d);
-        checkRoverPosition();
-    }
-
     public void checkRoverPosition() throws Exception {
         if (x_axis > plateau.getX_MAX() && y_axis > plateau.getY_MAX())
             throw new Exception("Rovers position is incorrect. Please enter correct coordinates");

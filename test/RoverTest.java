@@ -13,7 +13,7 @@ class RoverTest {
     @BeforeEach
     public void setUp() throws Exception {
         plateau=new Plateau(5,5);
-        rover = new Rover( 1, 2, Direction.North);
+        rover = new Rover( plateau,1, 2, Direction.North);
 
     }
 
@@ -73,7 +73,7 @@ class RoverTest {
     public void checkMoveRoverCanThrowExceptionWhenRoverCoordinatesExceedsPlateau() throws Exception {
         boolean thrown=false;
         try {
-            rover = new Rover( 6, 6, Direction.North); //given plateau coordinates=> (5,5)
+            rover = new Rover( plateau, 6, 6, Direction.North);
         } catch (Exception e) {
             thrown = true;
         }
@@ -90,7 +90,7 @@ class RoverTest {
 
     @Test
     public void checkSecondTestInstruction() throws Exception {
-        rover = new Rover(3, 3, Direction.East);
+        rover = new Rover(plateau, 3, 3, Direction.East);
         rover.readInstruction("MMRMMRMRRM");
         assertEquals(rover.getX_axis(), 5);
         assertEquals(rover.getY_axis(), 1);
