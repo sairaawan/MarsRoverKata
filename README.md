@@ -1,6 +1,9 @@
 # Move rovers around mars
 
+Assumptions:
+
 •	Surface of mars is a rectangular/square grid plateau
+
 •	Plateau has x and y  coordinates defining total grid for example 5*5
 
 # Rover:
@@ -43,7 +46,13 @@ To run the program we have to provide following task in a sequence:
 3.	If direction is East, do => x_axis-1, making sure it’s not exceeding min x-axis value (0) of the plateau.
 4.	If direction is West, do => y_axis-1, making sure it’s not exceeding min y-axis value (0) of the plateau.
 
+# Future Considerations:
 
+Creating Plateau for different shapes
+
+Using obstacles and restricting movements
+
+Creating more than two rovers and moving them around Plateau
 
 
 
