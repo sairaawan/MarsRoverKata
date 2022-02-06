@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 class RoverTest {
+    public Vehicle vehicle;
     public Rover rover;
     public Plateau plateau;
 
@@ -14,6 +15,7 @@ class RoverTest {
     public void setUp() throws Exception {
         plateau=new Plateau(5,5);
         rover = new Rover( plateau,1, 2, Direction.North);
+        vehicle=new Vehicle(rover);
 
     }
 
@@ -40,21 +42,21 @@ class RoverTest {
 
     @Test
     public void checkRoverCanTurnLeft() throws Exception {
-        rover.readInstruction("L");
+        vehicle.readInstruction("L");
         assertEquals(rover.getD(), Direction.West);
 
     }
 
     @Test
     public void checkRoverCanTurnRight() throws Exception {
-        rover.readInstruction("R");
+        vehicle.readInstruction("R");
         assertEquals(rover.getD(), Direction.East);
 
     }
 
     @Test
     public void checkRoverCanMove() throws Exception {
-        rover.readInstruction("M");
+        vehicle.readInstruction("M");
         assertEquals(rover.getY_axis(), 3);
     }
 
@@ -62,7 +64,7 @@ class RoverTest {
     public void checkMoveRoverCanThrowExceptionWhenMovementExceedsPlateauBoundary() throws Exception {
         boolean thrown = false;
         try {
-            rover.readInstruction("MMMMMMMMMMM");
+            vehicle.readInstruction("MMMMMMMMMMM");
         } catch (Exception e) {
             thrown = true;
         }
@@ -82,7 +84,7 @@ class RoverTest {
 
     @Test
     public void checkFirstTestInstruction() throws Exception {
-        rover.readInstruction("LMLMLMLMM");
+        vehicle.readInstruction("LMLMLMLMM");
         assertEquals(rover.getX_axis(), 1);
         assertEquals(rover.getY_axis(), 3);
         assertEquals(rover.getD(), Direction.North);
@@ -91,7 +93,8 @@ class RoverTest {
     @Test
     public void checkSecondTestInstruction() throws Exception {
         rover = new Rover(plateau, 3, 3, Direction.East);
-        rover.readInstruction("MMRMMRMRRM");
+        vehicle=new Vehicle(rover);
+        vehicle.readInstruction("MMRMMRMRRM");
         assertEquals(rover.getX_axis(), 5);
         assertEquals(rover.getY_axis(), 1);
         assertEquals(rover.getD(), Direction.East);
