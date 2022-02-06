@@ -40,9 +40,6 @@ public class Rover implements VehicleRover {
             throw new Exception("Rovers position is incorrect. Please enter correct coordinates");
     }
 
-    // Checking methodS upon receiving instruction.Converting instruction to uppercase and ignoring any characters other than L/M/R.
-
-
     // Method to check if instruction is M. This method also checks if movement causes rover to cross plateau's boundary
 
     @Override
