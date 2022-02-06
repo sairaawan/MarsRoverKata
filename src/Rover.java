@@ -42,19 +42,10 @@ public class Rover implements VehicleRover {
 
     // Checking methodS upon receiving instruction.Converting instruction to uppercase and ignoring any characters other than L/M/R.
 
-    public void readInstruction(String instruct) throws Exception {
-        instruct = instruct.toUpperCase();
-        instruct = instruct.replaceAll("[^LRM]", "");
-        for (int ins = 0; ins < instruct.length(); ins++) {
-            char x = instruct.charAt(ins);
-            if (x == 'M') moveRover();
-            if (x == 'R') turnRight();
-            if (x == 'L') turnLeft();
-        }
-    }
 
     // Method to check if instruction is M. This method also checks if movement causes rover to cross plateau's boundary
 
+    @Override
     public void moveRover() throws Exception {
         if (direction == Direction.North && this.y_axis + 1 <= this.plateau.getY_MAX())
             this.y_axis += 1;
@@ -69,7 +60,7 @@ public class Rover implements VehicleRover {
     }
 
     // Method to check if instruction is R
-
+    @Override
     public void turnRight() {
         if (this.direction == Direction.North) {
             this.direction = Direction.East;
@@ -86,7 +77,7 @@ public class Rover implements VehicleRover {
     }
 
     // Method to check if instruction is L
-
+    @Override
     public void turnLeft() {
         if (this.direction == Direction.North) {
             this.direction = Direction.West;
