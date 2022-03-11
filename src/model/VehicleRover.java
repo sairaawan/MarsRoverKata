@@ -1,8 +1,11 @@
-public class Vehicle {
+package model;
 
-    private VehicleRover vehicle;
+public class VehicleRover {
 
-    public Vehicle(VehicleRover vehicle) {
+    private Vehicle vehicle;
+
+
+    public VehicleRover(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
 
@@ -11,7 +14,7 @@ public class Vehicle {
         instruct = instruct.replaceAll("[^LRM]", "");
         for (int ins = 0; ins < instruct.length(); ins++) {
             char x = instruct.charAt(ins);
-            if (x == 'M') vehicle.moveRover();
+            if (x=='M') vehicle.moveRover();
             if (x == 'R') vehicle.turnRight();
             if (x == 'L') vehicle.turnLeft();
         }
@@ -23,3 +26,4 @@ public class Vehicle {
                 '}';
     }
 }
+

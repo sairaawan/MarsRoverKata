@@ -1,4 +1,6 @@
-public interface VehicleRover {
+package model;
+
+public interface Vehicle {
 
     void moveRover() throws Exception;
 
