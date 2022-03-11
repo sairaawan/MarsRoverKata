@@ -1,5 +1,6 @@
-
+package application;
 import java.util.Scanner;
+import model.*;
 
 public class Main {
     private static Scanner scan = new Scanner(System.in);
@@ -57,7 +58,7 @@ public class Main {
         int y = getCoordinatesY();
         Direction d = getDirection();
         Rover rover = new Rover(new Plateau(p1, p2), x, y, d);
-        Vehicle vehicle = new Vehicle(rover);
+        VehicleRover vehicle = new VehicleRover(rover);
         System.out.println("First Rover starting position: " + vehicle);
 
 //        Second Rover creation
@@ -67,7 +68,7 @@ public class Main {
         y = getCoordinatesY();
         d = getDirection();
         Rover rover2 = new Rover(new Plateau(p1, p2), x, y, d);
-        Vehicle vehicle2 = new Vehicle(rover2);
+        VehicleRover vehicle2 = new VehicleRover(rover2);
         System.out.println("Second Rover current position: " + vehicle2);
 
 //        Giving instructions to both rovers
@@ -93,3 +94,4 @@ public class Main {
 
 
 }
+

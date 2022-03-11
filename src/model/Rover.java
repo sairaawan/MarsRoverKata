@@ -1,6 +1,7 @@
-import java.util.Locale;
+package model;
+import error.RuntimeException;
 
-public class Rover implements VehicleRover {
+public class Rover implements Vehicle {
 
     //  Creating rovers attributes
 
@@ -37,7 +38,7 @@ public class Rover implements VehicleRover {
 
     public void checkRoverPosition() throws Exception {
         if (x_axis > plateau.getX_MAX() && y_axis > plateau.getY_MAX())
-            throw new Exception("Rovers position is incorrect. Please enter correct coordinates");
+            throw new RuntimeException("Rovers position is incorrect. Please enter correct coordinates");
     }
 
     // Method to check if instruction is M. This method also checks if movement causes rover to cross plateau's boundary
@@ -53,7 +54,7 @@ public class Rover implements VehicleRover {
         else if (direction == Direction.South && this.y_axis - 1 >= 0)
             this.y_axis -= 1;
         else
-            throw new Exception("Exceeding plateau coordinates: Movement not allowed further, Please change your direction after " + plateau.getY_MAX() + " moves");
+            throw new RuntimeException("Exceeding plateau coordinates: Movement not allowed further, Please change your direction after " + plateau.getY_MAX() + " moves");
     }
 
     // Method to check if instruction is R
